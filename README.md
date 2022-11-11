@@ -21,6 +21,21 @@ $ docker-compose run web ./manage.py createsuperuser
 
 Для тонкой настройки Docker Compose используйте переменные окружения. Их названия отличаются от тех, что задаёт docker-образа, сделано это чтобы избежать конфликта имён. Внутри docker-compose.yaml настраиваются сразу несколько образов, у каждого свои переменные окружения, и поэтому их названия могут случайно пересечься. Чтобы не было конфликтов к названиям переменных окружения добавлены префиксы по названию сервиса. Список доступных переменных можно найти внутри файла [`docker-compose.yml`](./docker-compose.yml).
 
+## Как запустить prod-версию
+
+Установите kubernetes (исполняемые файлы kubectl и minikube).
+
+Запустите БД по инструкции из предыдущего раздела.
+
+В новом терминале перейдите в папку kubernetes и выполните:
+
+```shell-session
+$ kubectl apply -f django-config-v2.yaml
+$ kubectl apply -f django-deployment-v2.yaml
+$ kubectl apply -f django-service.yaml
+$ minikube service django-service # для создания туннеля
+```
+
 ## Переменные окружения
 
 Образ с Django считывает настройки из переменных окружения:
