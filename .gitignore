@@ -2,3 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
+devman.steps.txt
+kubernetes/django-pod.yaml
+kubernetes/django-deployment-v1.yaml
