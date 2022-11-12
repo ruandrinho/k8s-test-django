@@ -4,4 +4,5 @@ __pycache__/
 *$py.class
 devman.steps.txt
 kubernetes/django-pod.yaml
+kubernetes/django-pod-clearsessions.yaml
 kubernetes/django-deployment-v1.yaml

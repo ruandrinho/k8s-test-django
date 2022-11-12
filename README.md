@@ -36,6 +36,14 @@ $ kubectl apply -f django-service.yaml
 $ minikube service django-service # для создания туннеля
 ```
 
+## Дополнительные операции
+
+Запуск периодической очистки сессий DjangoL:
+
+```shell-session
+$ kubectl apply -f django-cronjob-clearsessions.yaml
+```
+
 ## Переменные окружения
 
 Образ с Django считывает настройки из переменных окружения:
