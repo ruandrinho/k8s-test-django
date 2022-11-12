@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: django-migrate
+spec:
+  template:
+    spec:
+      containers:
+      - name: django
+        image: docker.io/andrinho/django_app
+        env:
+        - name: SECRET_KEY
+          value: REPLACE_ME
+        - name: DATABASE_URL
+          value: postgres://test_k8s:OwOtBep9Frut@192.168.0.18:8001/test_k8s
+        command: ["./manage.py",  "migrate"]
+      restartPolicy: Never
+  backoffLimit: 4

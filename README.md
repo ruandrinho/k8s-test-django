@@ -38,10 +38,22 @@ $ minikube service django-service # для создания туннеля
 
 ## Дополнительные операции
 
-Запуск периодической очистки сессий DjangoL:
+Запуск периодической очистки сессий Django раз в сутки:
 
 ```shell-session
 $ kubectl apply -f django-cronjob-clearsessions.yaml
+```
+
+Запуск очистки сессий вне очереди:
+
+```shell-session
+kubectl create job --from=cronjob/django-clearsessions django-clearsessions
+```
+
+Миграция БД:
+
+```shell-session
+kubectl apply -f django-job-migrate.yaml
 ```
 
 ## Переменные окружения
